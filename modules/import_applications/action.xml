@@ -5,7 +5,7 @@
         <field name="name">Load Applications data</field>
         <field eval="False" name="active" />
         <field name="doall" eval="False"/>
-        <field name="model" eval="'import.applications'"/>
+        <field name="model" eval="'importapplications'"/>
         <field name="function" eval="'action_load_data'"/>
         <field name="args" eval="'()'"/>
     </record>

@@ -14,7 +14,7 @@ _logger.setLevel(logging.DEBUG)
 
 
 class ImportJobs(models.Model):
-    _name = 'import.applications'
+    _name = 'importapplications'
 
     @api.model
     def action_load_data(self):
