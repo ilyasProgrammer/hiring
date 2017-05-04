@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="import_jobs" model="ir.actions.server">
+        <field name="name">Load Applications from CSV</field>
+        <field name="model_id" ref="model_import_applications"/>
+        <field name="condition">True</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="code">self.action_load_data(cr, uid, context=context)</field>
+    </record>
+     <record model="ir.cron" id="ir_cron_load_gsmarena_data">
+        <field name="name">Load Applications data</field>
+        <field eval="False" name="active" />
+        <field name="doall" eval="False"/>
+        <field name="model" eval="'import.applications'"/>
+        <field name="function" eval="'action_load_data'"/>
+        <field name="args" eval="'()'"/>
+    </record>
+</data>
+</openerp>
