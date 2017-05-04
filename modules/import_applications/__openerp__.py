@@ -11,7 +11,8 @@
     'external_dependencies': {},
     # sudo apt-get install python-tk
     'data': [
-        'action.xml'
+        'action.xml',
+        'security/ir.model.access.csv',
     ],
     'application': True,
     'installable': True,
