@@ -2,21 +2,11 @@
 
 from openerp import api, fields, models
 import logging
-import base64
-import wget
 import csv
-import os
-import tempfile
 import sys
-import string
-from time import strptime
 from datetime import datetime
 import urllib
 import urllib2
-import xml.etree.ElementTree
-import base64
-import re
-from bs4 import BeautifulSoup as bs
 import string
 
 _logger = logging.getLogger("# " + __name__)

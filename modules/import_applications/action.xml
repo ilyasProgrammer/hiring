@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
-     <record model="ir.cron" id="ir_cron_load_gsmarena_data">
+     <record model="ir.cron" id="ir_cron_load_apl_data">
         <field name="name">Load Applications data</field>
         <field eval="False" name="active" />
         <field name="doall" eval="False"/>
