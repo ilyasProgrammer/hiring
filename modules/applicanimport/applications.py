@@ -14,7 +14,12 @@ import ntpath
 _logger = logging.getLogger("# " + __name__)
 _logger.setLevel(logging.DEBUG)
 
-
+#1 -ok
+#2 -466
+#3 -384
+#4 - ok
+#5 - ok
+#6 - ok
 class ImportJobs(models.Model):
     _name = 'importapplications'
 
@@ -73,18 +78,22 @@ class ImportJobs(models.Model):
                         _logger.info("New application created: %s", new_application.name)
                     except:
                         _logger.error("Wrong line %s in file. Exception: %s", (ind, sys.exc_info()[0]))
-                file_data = get_http_page(row[12])
-                if file_data:  # - Resume / to be downloaded as file and uploaded to Odoo as attachment mapped as CV for the application.
-                    file = base64.b64encode(file_data)
-                    _logger.info("File downloaded: %s", row[12])
-                    IrAttachment.create({
-                        'name': ntpath.basename(row[12]),
-                        'datas_fname': ntpath.basename(row[12]),
-                        'db_datas': file,
-                        'res_model': applicant._name,
-                        'type': 'binary',
-                        'res_id': found_applicant.id or new_application.id,
-                    })
+                try:
+                    file_data = get_http_page(row[12])
+                    if file_data:  # - Resume / to be downloaded as file and uploaded to Odoo as attachment mapped as CV for the application.
+                        file = base64.b64encode(file_data)
+                        _logger.info("File downloaded: %s", row[12])
+                        IrAttachment.create({
+                            'name': ntpath.basename(row[12]),
+                            'datas_fname': ntpath.basename(row[12]),
+                            'db_datas': file,
+                            'res_model': applicant._name,
+                            'type': 'binary',
+                            'res_id': found_applicant.id or new_application.id,
+                        })
+                except:
+                    _logger.error("Wrong line %s in file. Exception: %s", (ind, sys.exc_info()[0]))
+                    _logger.error("Wrong link %s", row[12])
 
 
 def get_http_page(url, params=None):
