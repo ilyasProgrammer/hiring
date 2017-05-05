@@ -3,6 +3,7 @@
 from openerp import api, fields, models
 import logging
 import csv
+import base64
 import sys
 from datetime import datetime
 import urllib
@@ -29,8 +30,8 @@ class ImportJobs(models.Model):
             spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
             next(spamreader)
             for ind, row in enumerate(spamreader):
-                if ind == 300:
-                    break
+                # if ind == 100:
+                #     break
                 _logger.info("Iteration: %s", ind)
                 found_job = job.search([('name', '=', row[0].strip())], limit=1)
                 found_applicant = applicant.search([('name', '=', found_job.name + ' ' + row[1].strip())], limit=1)
@@ -71,18 +72,17 @@ class ImportJobs(models.Model):
                         _logger.info("New application created: %s", new_application.name)
                     except:
                         _logger.error("Wrong line %s in file. Exception: %s", (ind, sys.exc_info()[0]))
-                # file_data = get_http_page(row[12])
-                # if file_data:
-                #     file = base64.b64encode(file_data)
-                # - Resume / to be downloaded as file and uploaded to Odoo as attachment mapped as CV for the application.
-                IrAttachment.create({
-                    'name': found_partner.name,
-                    'datas_fname': found_partner.name,
-                    'url': row[12],
-                    'res_model': applicant._name,
-                    'type': 'url',
-                    'res_id': found_applicant.id or new_application.id,
-                })
+                file_data = get_http_page(row[12])
+                if file_data:  # - Resume / to be downloaded as file and uploaded to Odoo as attachment mapped as CV for the application.
+                    file = base64.b64encode(file_data)
+                    IrAttachment.create({
+                        'name': found_partner.name,
+                        'datas_fname': found_partner.name,
+                        'db_datas': file,
+                        'res_model': applicant._name,
+                        'type': 'binary',
+                        'res_id': found_applicant.id or new_application.id,
+                    })
 
 
 def get_http_page(url, params=None):
