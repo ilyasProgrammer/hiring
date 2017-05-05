@@ -9,6 +9,7 @@ from datetime import datetime
 import urllib
 import urllib2
 import string
+import ntpath
 
 _logger = logging.getLogger("# " + __name__)
 _logger.setLevel(logging.DEBUG)
@@ -30,7 +31,7 @@ class ImportJobs(models.Model):
             spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
             next(spamreader)
             for ind, row in enumerate(spamreader):
-                if ind == 100:
+                if ind == 20:
                     break
                 _logger.info("Iteration: %s", ind)
                 found_job = job.search([('name', '=', row[0].strip())], limit=1)
@@ -77,8 +78,8 @@ class ImportJobs(models.Model):
                     file = base64.b64encode(file_data)
                     _logger.info("File downloaded: %s", row[12])
                     IrAttachment.create({
-                        'name': found_partner.name,
-                        'datas_fname': found_partner.name,
+                        'name': ntpath.basename(row[12]),
+                        'datas_fname': ntpath.basename(row[12]),
                         'db_datas': file,
                         'res_model': applicant._name,
                         'type': 'binary',
