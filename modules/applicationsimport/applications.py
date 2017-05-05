@@ -30,8 +30,8 @@ class ImportJobs(models.Model):
             spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
             next(spamreader)
             for ind, row in enumerate(spamreader):
-                # if ind == 100:
-                #     break
+                if ind == 100:
+                    break
                 _logger.info("Iteration: %s", ind)
                 found_job = job.search([('name', '=', row[0].strip())], limit=1)
                 found_applicant = applicant.search([('name', '=', found_job.name + ' ' + row[1].strip())], limit=1)
