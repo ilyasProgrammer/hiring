@@ -75,6 +75,7 @@ class ImportJobs(models.Model):
                 file_data = get_http_page(row[12])
                 if file_data:  # - Resume / to be downloaded as file and uploaded to Odoo as attachment mapped as CV for the application.
                     file = base64.b64encode(file_data)
+                    _logger.info("File downloaded: %s", row[12])
                     IrAttachment.create({
                         'name': found_partner.name,
                         'datas_fname': found_partner.name,
