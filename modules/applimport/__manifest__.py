@@ -12,7 +12,7 @@
     # sudo apt-get install python-tk
     'data': [
         'action.xml',
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
     ],
     'application': True,
     'installable': True,
