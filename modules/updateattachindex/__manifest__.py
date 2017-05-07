@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "AAAAAAAAAAAAAAA",
-    'summary': """Applications import""",
-    'description': """Applications import""",
+    'name': "updateattachindex",
+    'summary': """updateattachindex""",
+    'description': """updateattachindex""",
     'author': "Ilyas",
     'website': "https://github.com/ilyasProgrammer",
     'category': 'Custom',

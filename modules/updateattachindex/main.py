@@ -32,6 +32,6 @@ class UpdateIndex(models.Model):
         l = len(recs)
         cnt=0
         for rec in recs:
-            _logger.info("Iteration ", (cnt, l))
+            _logger.info("Iteration %s of %s" % (cnt, l))
             rec.datas = rec.db_datas
             cnt += 1
