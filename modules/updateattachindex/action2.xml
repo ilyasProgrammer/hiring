@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.cron" id="aaaavcxxxvcvxcvaa">
+            <field name="name">update index of hr.applicant attachments</field>
+            <field name="active" eval="False"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="model" eval="'updateindex'"/>
+            <field name="function" eval="'update_index_go'"/>
+            <field name="args" eval="'()'"/>
+        </record>
+    </data>
+</odoo>

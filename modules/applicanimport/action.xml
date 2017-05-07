@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-<data>
+<odoo>
+<data noupdate="0">
      <record model="ir.cron" id="ir_cron_load_applications_data">
         <field name="name">Load Applications data</field>
         <field eval="False" name="active" />
@@ -10,4 +10,4 @@
         <field name="args" eval="'()'"/>
     </record>
 </data>
-</openerp>
+</odoo>

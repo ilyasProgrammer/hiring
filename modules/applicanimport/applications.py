@@ -20,6 +20,7 @@ _logger.setLevel(logging.DEBUG)
 #4 - ok
 #5 - ok
 #6 - ok
+
 class ImportJobs(models.Model):
     _name = 'importapplications'
 
@@ -96,6 +97,19 @@ class ImportJobs(models.Model):
                     _logger.error("Wrong link %s", row[12])
 
 
+    @api.model
+    def aaa(self):
+        applicant = self.env['hr.applicant']
+        job = self.env['hr.job']
+        partner = self.env['res.partner']
+        source = self.env['utm.source']
+        country = self.env['res.country']
+        IrAttachment = self.env['ir.attachment']
+        filename = '/tmp/jobs.csv'
+
+
+
+
 def get_http_page(url, params=None):
     # url - to load page from
     # params - dict
@@ -111,3 +125,4 @@ def get_http_page(url, params=None):
     request = urllib2.Request(url, headers=request_headers)
     contents = urllib2.urlopen(request).read()
     return contents
+

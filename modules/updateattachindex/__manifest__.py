@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Applications import",
+    'name': "AAAAAAAAAAAAAAA",
     'summary': """Applications import""",
     'description': """Applications import""",
     'author': "Ilyas",
@@ -10,7 +10,7 @@
     'depends': ['hr_recruitment','partner_contact_gender'],
     # sudo apt-get install python-tk
     'data': [
-        'action.xml',
+        'action2.xml',
         # 'security/ir.model.access.csv',
     ],
 }
