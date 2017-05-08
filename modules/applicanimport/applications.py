@@ -87,7 +87,7 @@ class ImportJobs(models.Model):
                         IrAttachment.create({
                             'name': ntpath.basename(row[12]),
                             'datas_fname': ntpath.basename(row[12]),
-                            'db_datas': file,
+                            'datas': file,
                             'res_model': applicant._name,
                             'type': 'binary',
                             'res_id': found_applicant.id or new_application.id,
@@ -95,17 +95,6 @@ class ImportJobs(models.Model):
                 except:
                     _logger.error("Wrong line %s in file. Exception: %s", (ind, sys.exc_info()[0]))
                     _logger.error("Wrong link %s", row[12])
-
-
-    @api.model
-    def aaa(self):
-        applicant = self.env['hr.applicant']
-        job = self.env['hr.job']
-        partner = self.env['res.partner']
-        source = self.env['utm.source']
-        country = self.env['res.country']
-        IrAttachment = self.env['ir.attachment']
-        filename = '/tmp/jobs.csv'
 
 
 
